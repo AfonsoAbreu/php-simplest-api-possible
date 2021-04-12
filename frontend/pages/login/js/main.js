@@ -5,7 +5,7 @@ const inputs = [...labelFloat()];
 const signIn = document.getElementById("signIn");
 signIn.addEventListener("click", async function () {
   const response = await fetch(
-    "http://localhost/projeto-teste-pwiii-ds/02-trabalho-pra-mencao/api/user", 
+    "http://localhost/projeto-teste-pwiii-ds/php-simplest-api-possible/api/user", 
     {
       method: "POST",
       credentials: "include",
@@ -25,7 +25,7 @@ signIn.addEventListener("click", async function () {
     const err = document.getElementById("err");
     err.textContent = "Dados Inválidos";
   } else {
-    window.location = "/projeto-teste-pwiii-ds/02-trabalho-pra-mencao/gerenciar-itens";
+    window.location = "/projeto-teste-pwiii-ds/php-simplest-api-possible/gerenciar-itens";
   }
 });
 

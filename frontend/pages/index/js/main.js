@@ -2,7 +2,7 @@ import ShopItem from '../../../public/js/shopItem.js';
 
 async function fetchProducts () {
   const response = await fetch(
-    "http://localhost/projeto-teste-pwiii-ds/02-trabalho-pra-mencao/api/product", 
+    "http://localhost/projeto-teste-pwiii-ds/php-simplest-api-possible/api/product", 
     {
       method: "GET",
       credentials: "include",
@@ -14,9 +14,11 @@ async function fetchProducts () {
 
   const items = await response.json();
   const parent = document.getElementById("productContainer");
+  const err = document.getElementById("err");
+  const previousItems = document.querySelectorAll(".shop-item");
+  previousItems.forEach(e => parent.removeChild(e));//remove os itens antigos
   
   if (items.length > 0) {
-    const err = document.getElementById("err");
     err.textContent = "";
     err.style.display = "none";
     for (const item of items) {
@@ -28,7 +30,12 @@ async function fetchProducts () {
         demoImg: item.im_produto
       });
     }
+  } else {
+    err.textContent = "Oops... Ainda não temos produtos a venda :´(";
+    err.style.display = "block";
   }
 }
 
+
 fetchProducts();
+setInterval(fetchProducts, 5000);

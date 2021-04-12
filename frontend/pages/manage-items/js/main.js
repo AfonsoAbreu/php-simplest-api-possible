@@ -34,7 +34,7 @@ inputs.forEach((e, i) => {
 const submit = document.getElementById("submit");
 submit.addEventListener("click", async () => {
   const response = await fetch(
-    "http://localhost/projeto-teste-pwiii-ds/02-trabalho-pra-mencao/api/product", 
+    "http://localhost/projeto-teste-pwiii-ds/php-simplest-api-possible/api/product", 
     {
       method: "POST",
       credentials: "include",
@@ -74,7 +74,7 @@ submit.addEventListener("click", async () => {
 
 async function checkLogin () {
   const response = await fetch(
-    "http://localhost/projeto-teste-pwiii-ds/02-trabalho-pra-mencao/api/user", 
+    "http://localhost/projeto-teste-pwiii-ds/php-simplest-api-possible/api/user", 
     {
       method: "GET",
       credentials: "include",
@@ -87,7 +87,7 @@ async function checkLogin () {
   );
 
   if (!response.ok) {
-    window.location = "/projeto-teste-pwiii-ds/02-trabalho-pra-mencao/login"
+    window.location = "/projeto-teste-pwiii-ds/php-simplest-api-possible/login"
   } else {
     const email = document.getElementById("email");
     email.innerHTML = (await response.json()).cd_email_usuario;
