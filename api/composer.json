@@ -1,0 +1,16 @@
+{
+    "name": "afons/api",
+    "type": "project",
+    "authors": [
+        {
+            "name": "AfonsoAbreu",
+            "email": "65315866+AfonsoAbreu@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^5.2"
+    },
+    "autoload": {
+        "psr-4": {"src\\": "src/"}   
+    }
+}

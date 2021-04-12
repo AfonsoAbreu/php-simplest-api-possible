@@ -1,0 +1,4 @@
+RewriteEngine   On
+
+RewriteRule     ^login$ frontend/pages/login/index.html [NC]
+RewriteRule     ^gerenciar-itens$ frontend/pages/manage-items/index.html [NC]
