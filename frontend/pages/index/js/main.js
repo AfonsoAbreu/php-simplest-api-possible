@@ -1,8 +1,8 @@
 import ShopItem from '../../../public/js/shopItem.js';
 
-async function fetchProducts () {
+async function fetchProducts (previousItems) {
   const response = await fetch(
-    "http://localhost/projeto-teste-pwiii-ds/php-simplest-api-possible/api/product", 
+    "./api/product", 
     {
       method: "GET",
       credentials: "include",
@@ -15,10 +15,11 @@ async function fetchProducts () {
   const items = await response.json();
   const parent = document.getElementById("productContainer");
   const err = document.getElementById("err");
-  const previousItems = document.querySelectorAll(".shop-item");
-  previousItems.forEach(e => parent.removeChild(e));//remove os itens antigos
-  
-  if (items.length > 0) {
+  let currentItems = [...document.querySelectorAll(".shop-item")];
+
+  const equal = equals(currentItems, previousItems);
+  if (!equal || (items.length > 0 && items.length !== currentItems.length)) {
+    currentItems.forEach(e => parent.removeChild(e));//remove os itens antigos
     err.textContent = "";
     err.style.display = "none";
     for (const item of items) {
@@ -30,12 +31,20 @@ async function fetchProducts () {
         demoImg: item.im_produto
       });
     }
-  } else {
+    currentItems = [...document.querySelectorAll(".shop-item")];
+  } else if (!equal) {
+    currentItems.forEach(e => parent.removeChild(e));//remove os itens antigos
+    currentItems = [...document.querySelectorAll(".shop-item")]
     err.textContent = "Oops... Ainda não temos produtos a venda :´(";
     err.style.display = "block";
   }
+
+  setTimeout(() => fetchProducts(currentItems), 5000);
 }
 
+function equals (a, b) {
+  return a.length === b.length && a.every((e, i) => e === b[i]);
+}
 
-fetchProducts();
-setInterval(fetchProducts, 5000);
+const currentItems = [...document.querySelectorAll(".shop-item")];
+fetchProducts(currentItems);
