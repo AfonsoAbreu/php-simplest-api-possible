@@ -4,7 +4,7 @@ $dump = \file_get_contents(__DIR__."\dump\structure.sql");//pega o dump e separa
 require_once __DIR__."/../../env.php";
 $DB_HOST = $ENV["DB_HOST"];
 try {
-  $connection = new \PDO("mysql:host=$DB_HOST;charset=utf8", $ENV["DB_USERNAME"], $ENV["DB_PASSWORD"]);
+  $connection = new \PDO("mysql:host=$DB_HOST;charset=utf8;port=$DB_PORT", $ENV["DB_USERNAME"], $ENV["DB_PASSWORD"]);
   $connection->setAttribute(PDO::ATTR_AUTOCOMMIT, 0);//impede que o banco salve todas as alterações manualmente, essencial para aplicar transactions
 } catch (PDOException $e) {
   exit("Impossível criar a base de dados");

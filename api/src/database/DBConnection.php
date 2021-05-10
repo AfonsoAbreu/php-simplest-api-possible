@@ -12,9 +12,10 @@ class DBConnection {
     require __DIR__."/../../env.php";
     $DB_HOST = $ENV["DB_HOST"];
     $DB_DATABASE = $ENV["DB_DATABASE"];
+    $DB_PORT = $ENV["DB_PORT"];
     try {
       $this->connection = new PDO(
-        "mysql:host=$DB_HOST;dbname=$DB_DATABASE",
+        "mysql:host=$DB_HOST;dbname=$DB_DATABASE;port=$DB_PORT",
         $ENV["DB_USERNAME"],
         $ENV["DB_PASSWORD"]
       );
@@ -23,7 +24,7 @@ class DBConnection {
         require "createDB.php";
         try {//tenta denovo
           $this->connection = new PDO(
-            "mysql:host=$DB_HOST;dbname=$DB_DATABASE;charset=utf8",
+            "mysql:host=$DB_HOST;dbname=$DB_DATABASE;charset=utf8;port=$DB_PORT",
             $ENV["DB_USERNAME"],
             $ENV["DB_PASSWORD"]
           );
