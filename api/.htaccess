@@ -2,3 +2,4 @@ RewriteEngine   On
 
 RewriteRule     ^product$ src/product.php [NC]
 RewriteRule     ^user$ src/user.php [NC]
+RewriteRule     ^logoff$ src/logoff.php [NC]

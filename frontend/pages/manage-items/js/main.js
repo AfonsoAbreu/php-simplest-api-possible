@@ -94,3 +94,20 @@ async function checkLogin () {
   }
 }
 checkLogin();
+
+const logoffButton = document.getElementById("logoffButton");
+logoffButton.addEventListener("click", async () => {
+  await fetch(
+    "./api/logoff", 
+    {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Accept": "*/*",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      }
+    }
+  );
+  window.location = "./";
+});
