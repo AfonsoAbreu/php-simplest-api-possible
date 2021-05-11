@@ -31,8 +31,8 @@ export default class ShopItem {
     if (this.isDemo) {
       this.id = Math.random().toString();
       return `
-        <a class="bg-gray-100 rounded-lg overflow-hidden mb-10 shadow-lg cursor-not-allowed transition flex flex-col mx-auto w-full" individualId="${this.id}">
-          <img src="${this.demoImg ? this.demoImg : "https://designshack.net/wp-content/uploads/placeholder-image.png"}" class="rounded-b-lg object-cover h-56 w-full" onerror="this.src='https://designshack.net/wp-content/uploads/placeholder-image.png'">
+        <a class="bg-white rounded-lg overflow-hidden mb-10 shadow-lg cursor-not-allowed transition flex flex-col mx-auto w-full" individualId="${this.id}">
+          <img src="${this.demoImg ? this.demoImg : "https://designshack.net/wp-content/uploads/placeholder-image.png"}" class="rounded-b-lg object-contain h-56 w-full" onerror="https://designshack.net/wp-content/uploads/placeholder-image.png">
           <div class="px-5 py-2 flex flex-col h-full flex-grow">
             <p class="text-3xl font-sans price-tag">${this.price ? this.price : "R$X.XXX,XX"}</p>
             <p class="card-title">${this.title ? this.title : "Nome"}</p>
@@ -45,12 +45,12 @@ export default class ShopItem {
       `;
     } else {
       return `
-        <a class="shop-item bg-gray-100 rounded-lg overflow-hidden shadow-lg hover:bg-gray-200 cursor-pointer transition flex flex-col h-96 mb-10 w-full min-w-custom max-w-custom md:mx-3 md:flex-1" href="${this.purchaseLink}" target="_blank" individualId="${this.id}">
-          <img src="${this.demoImg}" class="rounded-b-lg object-cover h-56 w-full" onerror="this.src='https://designshack.net/wp-content/uploads/placeholder-image.png'">
+        <a class="shop-item bg-white rounded-lg overflow-hidden shadow-lg hover:bg-gray-200 cursor-pointer transition flex flex-col h-96 mb-10 w-full min-w-custom max-w-custom md:mx-3 md:flex-1" href="${this.purchaseLink}" target="_blank" individualId="${this.id}">
+          <img src="${this.demoImg}" class="rounded-b-lg object-contain h-full w-auto" onerror="this.src='https://designshack.net/wp-content/uploads/placeholder-image.png'">
           <div class="px-5 py-2 flex flex-col h-full flex-grow">
             <p class="text-3xl font-sans price-tag">${this.price}</p>
             <p class="card-title">${this.title}</p>
-            <button class="mx-auto block bg-green-500 text-2xl price-tag text-gray-100 px-6 py-1 rounded-full font-bold mt-auto hover:bg-gray-100 hover:text-green-500 hover:shadow transition flex flex-row items-center">
+            <button class="mx-auto block bg-green-500 text-2xl price-tag text-gray-50 px-6 py-1 rounded-full font-bold mt-auto hover:bg-gray-50 hover:text-green-500 hover:shadow transition flex flex-row items-center">
               <i class="fas fa-shopping-cart mr-2 block font-normal"></i>
               COMPRAR
             </button>
