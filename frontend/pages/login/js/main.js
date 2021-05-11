@@ -27,7 +27,7 @@ async function tryLogin (route, method, body = {}) {
     },
   };
   if (method === "PUT" || method === "POST" || method === "PATCH") {
-    reqData.body = body
+    reqData.body = JSON.stringify(body);
   }
   const response = await fetch(
     route, 
